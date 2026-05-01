@@ -1,0 +1,50 @@
+# Xcode
+*.xcuserstate
+*.xcuserdata
+*.xcbkptlist
+*.xcworkspace/xcuserdata
+*.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+*.xcscmblueprint
+
+# Build
+.build/
+build/
+DerivedData/
+*.o
+*.d
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+
+# IDE
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+*.bak
+
+# Secrets
+*.env
+secrets/
+
+# Claude Code
+.claude/
+CLAUDE.md
+
+# Distribution
+dist/

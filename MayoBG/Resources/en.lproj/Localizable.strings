@@ -1,0 +1,85 @@
+/* Menu bar */
+"menu.next_update" = "Next update: %@";
+"menu.next_update_empty" = "Next update: —";
+"menu.about_photo" = "About photo";
+"menu.untitled" = "Untitled";
+"menu.by_photographer" = "By %@";
+"menu.no_photo" = "No photo loaded";
+"menu.view_on_unsplash" = "View on Unsplash";
+"menu.change_wallpaper" = "Change wallpaper";
+"menu.change_all_wallpapers" = "Change all wallpapers";
+"menu.previous_wallpaper" = "Previous wallpaper";
+"menu.first_in_channel" = "First in channel";
+"menu.download_current" = "Download current wallpaper";
+"menu.channel" = "Channel";
+"menu.manage_channels" = "Manage channels...";
+"menu.update_interval" = "Update interval";
+"menu.randomize" = "Randomize";
+"menu.settings" = "Settings...";
+"menu.about" = "About...";
+"menu.quit" = "Quit";
+
+/* Time intervals */
+"interval.10min" = "10 minutes";
+"interval.15min" = "15 minutes";
+"interval.30min" = "30 minutes";
+"interval.1hour" = "1 hour";
+"interval.3hours" = "3 hours";
+"interval.12hours" = "12 hours";
+"interval.24hours" = "24 hours";
+"interval.1week" = "1 week";
+"interval.2weeks" = "2 weeks";
+
+/* Window titles */
+"window.settings" = "MayoBG Settings";
+"window.manage_channels" = "Manage Channels";
+"window.about" = "About MayoBG";
+
+/* Settings */
+"settings.general" = "General";
+"settings.api" = "Unsplash API";
+"settings.about" = "About";
+"settings.update_interval" = "Update interval";
+"settings.randomize" = "Randomize";
+"settings.launch_at_login" = "Launch at login";
+"settings.notifications" = "Notifications";
+"settings.wallpaper_change" = "Wallpaper change";
+"settings.download_complete" = "Download complete";
+"settings.language" = "Language";
+"settings.api_key_field" = "API Key";
+"settings.save" = "Save";
+"settings.saved" = "Saved";
+"settings.api_footer" = "Get your API key at unsplash.com/developers";
+"settings.client_id" = "Unsplash Client ID";
+"settings.version" = "Version 1.0";
+"settings.copyright" = "Copyright © 2026 Davide Maiorana\nwww.davidemaiorana.dev";
+"settings.description" = "Automatically changes wallpaper with photos from Unsplash.";
+"settings.api_guidelines" = "Unsplash API Guidelines";
+
+/* Language names */
+"language.english" = "English";
+"language.italian" = "Italiano";
+
+/* Channel manager */
+"channel.your_channels" = "Your channels";
+"channel.no_channels" = "No channels";
+"channel.add_channel" = "Add channel";
+"channel.channel_name" = "Channel name";
+"channel.type" = "Type";
+"channel.search" = "Search";
+"channel.collection" = "Collection";
+"channel.user" = "User";
+"channel.search_query" = "Search query (e.g. wallpaper)";
+"channel.collection_id" = "Collection ID";
+"channel.collection_title" = "Collection title";
+"channel.username" = "Unsplash username";
+"channel.display_name" = "Display name";
+"channel.add" = "Add";
+"channel.done" = "Done";
+
+/* API key prompt */
+"apikey.title" = "Unsplash API Key";
+"apikey.message" = "Enter your Unsplash Access Key to enable wallpaper changes.";
+"apikey.save" = "Save";
+"apikey.later" = "Later";
+"apikey.placeholder" = "Paste your Unsplash Access Key...";

@@ -1,0 +1,85 @@
+/* Menu bar */
+"menu.next_update" = "Prossimo aggiornamento: %@";
+"menu.next_update_empty" = "Prossimo aggiornamento: —";
+"menu.about_photo" = "Info foto";
+"menu.untitled" = "Senza titolo";
+"menu.by_photographer" = "Di %@";
+"menu.no_photo" = "Nessuna foto caricata";
+"menu.view_on_unsplash" = "Vedi su Unsplash";
+"menu.change_wallpaper" = "Cambia sfondo";
+"menu.change_all_wallpapers" = "Cambia tutti gli sfondi";
+"menu.previous_wallpaper" = "Sfondo precedente";
+"menu.first_in_channel" = "Primo nel canale";
+"menu.download_current" = "Scarica sfondo attuale";
+"menu.channel" = "Canale";
+"menu.manage_channels" = "Gestisci canali...";
+"menu.update_interval" = "Intervallo aggiornamento";
+"menu.randomize" = "Casuale";
+"menu.settings" = "Impostazioni...";
+"menu.about" = "Informazioni...";
+"menu.quit" = "Esci";
+
+/* Time intervals */
+"interval.10min" = "10 minuti";
+"interval.15min" = "15 minuti";
+"interval.30min" = "30 minuti";
+"interval.1hour" = "1 ora";
+"interval.3hours" = "3 ore";
+"interval.12hours" = "12 ore";
+"interval.24hours" = "24 ore";
+"interval.1week" = "1 settimana";
+"interval.2weeks" = "2 settimane";
+
+/* Window titles */
+"window.settings" = "Impostazioni MayoBG";
+"window.manage_channels" = "Gestisci canali";
+"window.about" = "Informazioni su MayoBG";
+
+/* Settings */
+"settings.general" = "Generale";
+"settings.api" = "Unsplash API";
+"settings.about" = "Informazioni";
+"settings.update_interval" = "Intervallo aggiornamento";
+"settings.randomize" = "Casuale";
+"settings.launch_at_login" = "Avvia al login";
+"settings.notifications" = "Notifiche";
+"settings.wallpaper_change" = "Cambio sfondo";
+"settings.download_complete" = "Download completato";
+"settings.language" = "Lingua";
+"settings.api_key_field" = "API Key";
+"settings.save" = "Salva";
+"settings.saved" = "Salvata";
+"settings.api_footer" = "Ottieni la tua API key su unsplash.com/developers";
+"settings.client_id" = "Unsplash Client ID";
+"settings.version" = "Versione 1.0";
+"settings.copyright" = "Copyright © 2026 Davide Maiorana\nwww.davidemaiorana.dev";
+"settings.description" = "Cambia sfondo automaticamente con foto da Unsplash.";
+"settings.api_guidelines" = "Linee guida API Unsplash";
+
+/* Language names */
+"language.english" = "Inglese";
+"language.italian" = "Italiano";
+
+/* Channel manager */
+"channel.your_channels" = "I tuoi canali";
+"channel.no_channels" = "Nessun canale";
+"channel.add_channel" = "Aggiungi canale";
+"channel.channel_name" = "Nome canale";
+"channel.type" = "Tipo";
+"channel.search" = "Ricerca";
+"channel.collection" = "Collezione";
+"channel.user" = "Utente";
+"channel.search_query" = "Query di ricerca (es. wallpaper)";
+"channel.collection_id" = "ID Collezione";
+"channel.collection_title" = "Titolo Collezione";
+"channel.username" = "Username Unsplash";
+"channel.display_name" = "Nome visualizzato";
+"channel.add" = "Aggiungi";
+"channel.done" = "Fatto";
+
+/* API key prompt */
+"apikey.title" = "Unsplash API Key";
+"apikey.message" = "Inserisci il tuo Unsplash Client ID (Access Key) per attivare il cambio sfondi.";
+"apikey.save" = "Salva";
+"apikey.later" = "Dopo";
+"apikey.placeholder" = "Incolla la tua Unsplash Access Key...";
