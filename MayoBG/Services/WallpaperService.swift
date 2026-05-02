@@ -2,6 +2,7 @@ import AppKit
 import OSLog
 import QuartzCore
 
+@MainActor
 final class WallpaperService {
     static let shared = WallpaperService()
 
@@ -47,8 +48,10 @@ final class WallpaperService {
             context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
             overlay.animator().alphaValue = 0
         } completionHandler: { [weak self] in
-            overlay.close()
-            self?.overlayWindows.removeAll { $0 === overlay }
+            MainActor.assumeIsolated {
+                overlay.close()
+                self?.overlayWindows.removeAll { $0 === overlay }
+            }
         }
     }
 

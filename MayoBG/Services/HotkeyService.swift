@@ -34,7 +34,7 @@ final class HotkeyService {
             GetApplicationEventTarget(),
             { (_, event, userData) -> OSStatus in
                 let service = Unmanaged<HotkeyService>.fromOpaque(userData!).takeUnretainedValue()
-                DispatchQueue.main.async {
+                Task { @MainActor in
                     service.onHotkey?()
                 }
                 return noErr

@@ -36,7 +36,7 @@ final class UnsplashService: @unchecked Sendable {
         orientation: String? = "landscape",
         count: Int = 1
     ) async throws -> [UnsplashPhoto] {
-        let apiKey = try await apiKey()
+        let apiKey = try apiKey()
         var components = URLComponents(string: "\(baseURL)/photos/random")!
         var queryItems: [URLQueryItem] = [
             URLQueryItem(name: "content_filter", value: "high"),
@@ -64,7 +64,7 @@ final class UnsplashService: @unchecked Sendable {
         perPage: Int = 10,
         orientation: String? = "landscape"
     ) async throws -> SearchResults {
-        let apiKey = try await apiKey()
+        let apiKey = try apiKey()
         var components = URLComponents(string: "\(baseURL)/search/photos")!
         var queryItems: [URLQueryItem] = [
             URLQueryItem(name: "query", value: query),
@@ -88,7 +88,7 @@ final class UnsplashService: @unchecked Sendable {
         page: Int = 1,
         perPage: Int = 10
     ) async throws -> [UnsplashPhoto] {
-        let apiKey = try await apiKey()
+        let apiKey = try apiKey()
         var components = URLComponents(string: "\(baseURL)/collections/\(collectionID)/photos")!
         components.queryItems = [
             URLQueryItem(name: "page", value: "\(page)"),
@@ -105,7 +105,7 @@ final class UnsplashService: @unchecked Sendable {
     }
 
     func trackDownload(for photo: UnsplashPhoto) async throws {
-        let apiKey = try await apiKey()
+        let apiKey = try apiKey()
         guard let location = photo.links.downloadLocation else { return }
         var request = URLRequest(url: location)
         request.setValue("Client-ID \(apiKey)", forHTTPHeaderField: "Authorization")
@@ -147,12 +147,11 @@ final class UnsplashService: @unchecked Sendable {
 
     // MARK: - Private
 
-    private func apiKey() async throws -> String {
-        do {
-            return try await APIKeyStore.shared.retrieve()
-        } catch {
+    private func apiKey() throws -> String {
+        guard let key = APIKeyPreferences.shared.retrieve() else {
             throw UnsplashError.noAPIKey
         }
+        return key
     }
 
     private func validateResponse(_ response: URLResponse) throws {

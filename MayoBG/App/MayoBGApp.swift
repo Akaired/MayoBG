@@ -32,11 +32,8 @@ struct MayoBGApp: App {
     }
 
     private func checkAPIKey() {
-        Task {
-            let hasKey = await APIKeyStore.shared.hasKey()
-            if !hasKey {
-                await MainActor.run { showAPIKeyPrompt() }
-            }
+        if !APIKeyPreferences.shared.hasKey() {
+            showAPIKeyPrompt()
         }
     }
 
@@ -55,13 +52,9 @@ struct MayoBGApp: App {
         if alert.runModal() == .alertFirstButtonReturn {
             let key = textField.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
             guard !key.isEmpty else { return }
-            Task {
-                await APIKeyStore.shared.store(key)
-                os_log(.info, "API key saved")
-                await MainActor.run {
-                    NotificationCenter.default.post(name: .APIKeyDidChange, object: nil)
-                }
-            }
+            APIKeyPreferences.shared.store(key)
+            os_log(.info, "API key saved")
+            NotificationCenter.default.post(name: .APIKeyDidChange, object: nil)
         }
     }
 }

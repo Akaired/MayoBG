@@ -1,6 +1,7 @@
 import AppKit
 import OSLog
 
+@MainActor
 final class HistoryManager {
     private(set) var history: [UnsplashPhoto] = []
     private var currentIndex: Int = -1

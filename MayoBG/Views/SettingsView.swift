@@ -17,12 +17,12 @@ struct SettingsView: View {
                 .tabItem { Label("settings.about".localized, systemImage: "info.circle") }
         }
         .frame(width: 450, height: 360)
-        .task { await loadAPIKey() }
+        .task { loadAPIKey() }
         .onChange(of: apiKey) { _, _ in keySaved = false }
     }
 
-    private func loadAPIKey() async {
-        if let key = try? await APIKeyStore.shared.retrieve() {
+    private func loadAPIKey() {
+        if let key = APIKeyPreferences.shared.retrieve() {
             apiKey = key
         }
     }
@@ -93,7 +93,7 @@ struct APITab: View {
                 }
 
                 Button("settings.save".localized) {
-                    Task { await saveAPIKey() }
+                    saveAPIKey()
                 }
                 .disabled(apiKey.isEmpty)
 
@@ -111,10 +111,10 @@ struct APITab: View {
         .padding()
     }
 
-    private func saveAPIKey() async {
+    private func saveAPIKey() {
         let key = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !key.isEmpty else { return }
-        await APIKeyStore.shared.store(key)
+        APIKeyPreferences.shared.store(key)
         keySaved = true
         NotificationCenter.default.post(name: .APIKeyDidChange, object: nil)
     }

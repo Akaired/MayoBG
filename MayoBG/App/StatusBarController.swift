@@ -123,8 +123,6 @@ final class StatusBarController: NSObject, NSWindowDelegate {
 
         if history.canGoBack {
             menu.addItem(menuItem("menu.previous_wallpaper".localized, #selector(loadPrevious), "Z", [.command, .option]))
-        }
-        if history.canGoBack {
             menu.addItem(menuItem("menu.first_in_channel".localized, #selector(firstInChannel), "R", [.command, .option]))
         }
 
@@ -296,7 +294,7 @@ final class StatusBarController: NSObject, NSWindowDelegate {
             os_log(.info, "fetchAndApply skipped — already loading")
             return
         }
-        let hasKey = await APIKeyStore.shared.hasKey()
+        let hasKey = APIKeyPreferences.shared.hasKey()
         guard hasKey else { return }
         isLoading = true
         defer { isLoading = false }
@@ -413,21 +411,7 @@ final class StatusBarController: NSObject, NSWindowDelegate {
             isLoading = true
             defer { isLoading = false }
             do {
-                let photo: UnsplashPhoto
-                switch activeChannel.kind {
-                case .search(let query):
-                    let result = try await unsplash.search(query: query, perPage: 1)
-                    guard let first = result.results.first else { return }
-                    photo = first
-                case .collection(let id, _):
-                    let results = try await unsplash.fetchCollectionPhotos(collectionID: id, perPage: 1)
-                    guard let first = results.first else { return }
-                    photo = first
-                case .user(let username, _):
-                    let results = try await unsplash.fetchRandom(username: username, count: 1)
-                    guard let first = results.first else { return }
-                    photo = first
-                }
+                let photo = try await fetchRandomPhoto(from: activeChannel)
                 let screenWidth = NSScreen.screens
                     .map { Int(($0.frame.width * $0.backingScaleFactor).rounded(.up)) }
                     .max() ?? 2560
