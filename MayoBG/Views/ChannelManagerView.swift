@@ -2,8 +2,10 @@ import SwiftUI
 
 struct ChannelManagerView: View {
     @Binding var channels: [Channel]
+    var activeChannelID: UUID
     var onSave: () -> Void
 
+    @State private var localChannels: [Channel] = []
     @State private var newName = ""
     @State private var newKind: NewChannelKind = .search
     @State private var queryText = ""
@@ -20,21 +22,39 @@ struct ChannelManagerView: View {
         VStack(alignment: .leading, spacing: 0) {
             List {
                 Section("channel.your_channels".localized) {
-                    if channels.isEmpty {
+                    if localChannels.isEmpty {
                         Text("channel.no_channels".localized).foregroundStyle(.secondary)
                     }
-                    ForEach(channels) { channel in
+                    ForEach(localChannels) { channel in
                         HStack {
                             VStack(alignment: .leading, spacing: 2) {
-                                Text(channel.name).fontWeight(.medium)
+                                HStack(spacing: 6) {
+                                    Text(channel.name).fontWeight(.medium)
+                                    if channel.id == activeChannelID {
+                                        Text("channel.active".localized)
+                                            .font(.caption)
+                                            .foregroundStyle(.blue)
+                                    }
+                                }
                                 Text(channel.kind.displayName)
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
                             Spacer()
+                            if channel.id != activeChannelID, localChannels.count > 1 {
+                                Button {
+                                    deleteChannel(channel)
+                                } label: {
+                                    Image(systemName: "trash")
+                                        .font(.system(size: 13))
+                                        .frame(width: 24, height: 24)
+                                }
+                                .buttonStyle(.borderless)
+                                .foregroundStyle(.secondary)
+                                .help("channel.delete".localized)
+                            }
                         }
                     }
-                    .onDelete(perform: deleteChannels)
                 }
             }
 
@@ -75,6 +95,7 @@ struct ChannelManagerView: View {
                         .disabled(!canAdd)
                     Spacer()
                     Button("channel.done".localized) {
+                        channels = localChannels
                         onSave()
                         dismiss()
                     }
@@ -83,7 +104,11 @@ struct ChannelManagerView: View {
             .padding()
         }
         .frame(width: 400, height: 420)
-        .onDisappear { onSave() }
+        .onAppear { localChannels = channels }
+        .onDisappear {
+            channels = localChannels
+            onSave()
+        }
     }
 
     private var canAdd: Bool {
@@ -115,7 +140,9 @@ struct ChannelManagerView: View {
                 username: username.trimmingCharacters(in: .whitespacesAndNewlines),
                 name: displayName.trimmingCharacters(in: .whitespacesAndNewlines))
         }
-        channels.append(Channel(id: UUID(), name: name, kind: kind))
+        localChannels.append(Channel(id: UUID(), name: name, kind: kind))
+        channels = localChannels
+        onSave()
 
         newName = ""
         queryText = ""
@@ -125,9 +152,11 @@ struct ChannelManagerView: View {
         displayName = ""
     }
 
-    private func deleteChannels(at offsets: IndexSet) {
-        guard channels.count > 1 else { return }
-        channels.remove(atOffsets: offsets)
+    private func deleteChannel(_ channel: Channel) {
+        guard channel.id != activeChannelID else { return }
+        guard localChannels.count > 1 else { return }
+        localChannels.removeAll { $0.id == channel.id }
+        channels = localChannels
         onSave()
     }
 }

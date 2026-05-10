@@ -19,6 +19,19 @@
     {
       "layers" : [
         {
+          "hidden" : true,
+          "image-name" : "shield-solid-full.svg",
+          "name" : "shield-solid-full",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -85,
+              0
+            ]
+          }
+        },
+        {
+          "hidden" : false,
           "image-name" : "image-solid-full.svg",
           "name" : "image-solid-full",
           "position" : {

@@ -76,6 +76,8 @@
 "channel.display_name" = "Nome visualizzato";
 "channel.add" = "Aggiungi";
 "channel.done" = "Fatto";
+"channel.active" = "Attivo";
+"channel.delete" = "Elimina";
 
 /* API key prompt */
 "apikey.title" = "Unsplash API Key";

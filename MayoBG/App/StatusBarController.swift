@@ -518,7 +518,7 @@ final class StatusBarController: NSObject, NSWindowDelegate {
             get: { [weak self] in self?.channels ?? [] },
             set: { [weak self] in self?.channels = $0 }
         )
-        let view = ChannelManagerView(channels: binding) { [weak self] in
+        let view = ChannelManagerView(channels: binding, activeChannelID: activeChannel.id) { [weak self] in
             self?.persistChannels()
             self?.rebuildItems()
         }
